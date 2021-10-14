@@ -279,6 +279,10 @@ class OpenApiFactoryTest extends TestCase
             'externalDocs' => ['url' => 'http://schema.example.com/Dummy'],
         ]));
 
+        $openApi = $factory(['servers' => [new Model\Server('/app_dev.php/')]]);
+
+        $this->assertEquals($openApi->getServers(), [new Model\Server('/app_dev.php/')]);
+
         $openApi = $factory(['base_url' => '/app_dev.php/']);
 
         $this->assertInstanceOf(OpenApi::class, $openApi);
